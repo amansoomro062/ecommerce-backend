@@ -8,6 +8,8 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
+
+// table row and columns - 1 record = 1 object ==== 1 field = 1 column
 @Entity
 @Table(name = "product")
 @Data
