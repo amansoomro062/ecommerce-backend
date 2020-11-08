@@ -2,16 +2,17 @@ package com.aman.ecommerce.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "product_category")
+@Table(name="product_category")
+// @Data -- known bug
 @Getter
 @Setter
 public class ProductCategory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -22,4 +23,12 @@ public class ProductCategory {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private Set<Product> products;
+
 }
+
+
+
+
+
+
+

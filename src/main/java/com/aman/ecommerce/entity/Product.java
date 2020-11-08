@@ -8,10 +8,8 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
-
-// table row and columns - 1 record = 1 object ==== 1 field = 1 column
 @Entity
-@Table(name = "product")
+@Table(name="product")
 @Data
 public class Product {
 
@@ -19,6 +17,10 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private ProductCategory category;
 
     @Column(name = "sku")
     private String sku;
@@ -41,7 +43,6 @@ public class Product {
     @Column(name = "units_in_stock")
     private int unitsInStock;
 
-
     @Column(name = "date_created")
     @CreationTimestamp
     private Date dateCreated;
@@ -49,9 +50,4 @@ public class Product {
     @Column(name = "last_updated")
     @UpdateTimestamp
     private Date lastUpdated;
-
-    @ManyToOne
-    @JoinColumn(name = "category_id" , nullable = false)
-    private ProductCategory category;
-
 }
